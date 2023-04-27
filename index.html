@@ -21,6 +21,20 @@
             <div x-show="open" @click.outside="open = false">Contents...</div>
         </div>
 
+        <!-- Auto gerar slug no click e on key press -->
+        <div x-data="{
+            name:'Mario Mello',
+            name_sluged:'mario-mello',
+            toSlug(){
+                this.name_sluged = this.name.split(' ').join('-').toLowerCase()
+            }
+        }">
+            <input type="text" x-model="name" @keypress="toSlug">
+
+            <button @click="toSlug">To Slug</button>
+
+            <h1 x-text="name_sluged"></h1>
+        </div>
         
     </body>
 
